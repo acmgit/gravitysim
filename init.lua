@@ -10,6 +10,7 @@
 local timer = 0
 local checktime = 5 -- postion check intervall
 local gravity = 1 -- standard on earth 9,81 m/s*s on sea level that is equal with 1 in Minetest game
+local maxheight = 2500
 local height = 3000
 
 minetest.register_globalstep(function(dtime)
@@ -30,6 +31,7 @@ minetest.register_globalstep(function(dtime)
 
                 if y >= 0 then
 
+                    if(y >= maxheight) then y = maxheight end
                     newgrav = gravity - (y/height);    -- going up in the sky just try out some values to suit your needs
                     newjump = 1 + y/125,             -- jumping calculation
 
